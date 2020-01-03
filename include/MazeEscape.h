@@ -7,7 +7,8 @@
 Position findEscape(int** map, int size);
 char* shortestPath(int** map, int size, Position *posRobot, Position posEscape);
 void robotEscape(int** map, int size, Position *posRobot, char* shortestPath);
-void moveRobot(int** map, int size, Position *posRobot, Position posEscape);
+void moveRobotAutonomous(int** map, int size, Position *posRobot, Position posEscape);
+Position* getChildren(int** map, int mapsize, Position* posRobot);
 
 
 #endif //MAZEESCAPE_H

@@ -15,6 +15,45 @@ Position findEscape(int** map, int size) {
     }
 }
 
+Position* getChildren(int** map, int mapsize, Position* posRobot) {
+    Position children[4];
+    int i = 0;
+    int x = posRobot->posX;
+    int y = posRobot->posY;
+    if (x < 0 || y < 0 || x >= mapsize || y >= mapsize || map[x][y] == 1) {
+        return 0;
+    } else {
+        if (map[x+1][y] != 1) {
+            children[i].posX = x + 1;
+            children[i].posY = y;
+            if (i < 4) i++;
+        } 
+        if (map[x][y+1] != 1) {
+            children[i].posX = x + 1;
+            children[i].posY = y;
+            if (i < 4) i++;
+        }
+        if (map[x][y-1] != 1) {
+            children[i].posX = x + 1;
+            children[i].posY = y;
+            if (i < 4) i++;
+        }
+        if (map[x-1][y] != 1) {
+            children[i].posX = x + 1;
+            children[i].posY = y;
+            if (i < 4) i++;
+        }
+    }
+
+    Position fixedChildren[i + 1];
+    for (int j = 0 ; j < (i+1) ; j++) {
+        fixedChildren[j] = children[j];
+    }
+
+    return fixedChildren;
+    
+}
+
 char* shortestPath(int** map, int size, Position* posRobot, Position posEscape) {
 }
 
@@ -29,7 +68,7 @@ void robotEscape(int** map, int size, Position* posRobot, char* shortestPath) {
  * @param size 
  * @param posRobot 
  */
-void moveRobot(int** map, int size, Position* posRobot, Position escapePosition) {
+void moveRobotAutonomous(int** map, int size, Position* posRobot, Position escapePosition) {
     printMap(map, size);
     char quit = 'u';
     while (1) {
