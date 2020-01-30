@@ -8,7 +8,8 @@ include_directories(include)
 
 # Robot library
 add_library(teleop_robot_lib SHARED include/RobotPosition.h src/RobotPosition.c
-                        include/Teleop.h src/Teleop.c)
+                        include/Teleop.h src/Teleop.c
+                        include/Map.h src/Map.c)
 
 # Lab 3: using the robot class
 # Lab 4: sensors on robot
